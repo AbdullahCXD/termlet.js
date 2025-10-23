@@ -27,9 +27,12 @@ export default class TestPlugin extends TermletPlugin {
 
 export function createPluginCMD(...args: any[]) {
   const [name] = args;
+  const f = path.join(getTermletDirectory(), "plugins", `${name}.ts`);
+
+  logger.point(`termlet/plugins/${name}.ts`);
 
   writeFileSync(
-    path.join(getTermletDirectory(), "plugins", `${name}.ts`),
+    f,
     pluginText.replaceAll(`$name`, name)
   );
 

@@ -2,19 +2,54 @@ import { execSync } from "child_process";
 import { TermletConfiguration } from "../../config";
 import { logger } from "../../utils";
 import chalk from "chalk";
+import { writeFileSync } from "fs";
+import path from "path";
+
+const baseFile = `<?xml version="1.1" encoding="UTF-8"?>
+
+<TermletProject renderer="termlet-base" version="1.0.0">
+
+  <Header>
+    <Meta key="terminal.title" value="Attracted to this" />
+    <Meta key="language.warnings" value="ignore" />
+    <Meta key="terminal.log" value="false" />
+  </Header>
+
+  <Content>
+
+    <Text id="test">
+      Hello World 
+    </Text>
+
+    <Boxed>Hello from this script</Boxed>
+    <Boxed title="I love Termlet" color="green">Wow this includes a color and a title</Boxed>
+
+    <ColoredText color="yellowBright" warning="false">This is colored!</ColoredText>
+
+    <Input type="text" title_alignment="center" id="message">Write a message here</Input>
+
+  </Content>
+
+</TermletProject>`
 
 export function createCMD(name: string) {
 
+  logger.info(`Creating a brand new Termlet project called: \`${name}\``);
+
   TermletConfiguration.newProject(name);
 
-  console.log(chalk.green(`[+]`) + ` ${chalk.greenBright(`npm install termlet.js@latest`)}`)
+  logger.point(`main.tml`);
 
-  execSync("npm install termlet.js@latest", {
+  writeFileSync(path.join(process.cwd(), 'main.tml'), baseFile);
+
+  logger.point(`npm install termlet.js@latest`)
+
+  execSync("npm install -D termlet.js@latest", {
     cwd: process.cwd(),
     encoding: "utf-8",
     env: process.env,
     stdio: "ignore"
-  })
+  });
 
   logger.info(`Created Termlet project successfully at ${process.cwd()}`);
 

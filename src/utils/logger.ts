@@ -1,11 +1,10 @@
 import chalk from "chalk";
 import boxen from "boxen";
-import * as Boxen from 'boxen';
+import * as Boxen from "boxen";
 
 export type LogType = "INFO" | "WARN" | "ERROR" | "DEBUG";
 
 export class Logger {
-
   private wtype: string = "on";
 
   log(type: LogType, message: string) {
@@ -19,7 +18,7 @@ export class Logger {
   }
 
   warn(message: string) {
-    if (this.wtype === "ignore") return
+    if (this.wtype === "ignore") return;
     this.log("WARN", message);
   }
 
@@ -39,6 +38,13 @@ export class Logger {
       borderStyle: "round",
     });
     console.log(boxed);
+  }
+
+  point(message: string) {
+    console.log(
+      chalk.green(`[+]`) +
+        ` ${chalk.greenBright(`${message}`)}`
+    );
   }
 
   private getTypeColor(type: LogType): (text: string) => string {

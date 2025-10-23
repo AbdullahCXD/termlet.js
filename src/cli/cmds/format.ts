@@ -41,7 +41,7 @@ export function formatCMD(options: FormatCMDOptions) {
       time = ms / 1000
     } 
 
-    console.log(chalk.gray(`[+] ${file} (${ms}ms)`));
+    logger.point(`${file} (${ms}ms)`);
 
   }
 }
