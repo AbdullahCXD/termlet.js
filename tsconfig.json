@@ -1,0 +1,19 @@
+{
+  "compilerOptions": {
+    "module": "ESNext",
+    "moduleResolution": "Bundler",
+    "target": "ES2024",
+    "jsx": "react-jsx",
+    "strictNullChecks": true,
+    "strictFunctionTypes": true,
+    "strict": true,
+    "sourceMap": true,
+    "outDir": "build",
+    "rootDir": "src",
+    "declarationMap": true,
+    "declaration": true,
+    "declarationDir": "typings"
+  },
+  "include": ["src/**/*.ts"],
+  "exclude": ["node_modules", "**/node_modules/*"]
+}

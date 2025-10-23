@@ -1,0 +1,40 @@
+<?xml version="1.1" encoding="UTF-8"?>
+
+<TermletProject renderer="termlet-base" version="1.0.0">
+
+  <Header>
+    <Meta key="terminal.title" value="Attracted to this" />
+    <Meta key="language.warnings" value="ignore" />
+    <Meta key="terminal.log" value="false" />
+  </Header>
+
+  <Content>
+
+    <Component name="SayHelloComponent">
+      <Text>Hello from my component</Text>
+    </Component>
+
+    <Text id="test">
+      Hello World 
+      <Text id="test2">Hello World2</Text>
+      <SayHelloComponent />
+    </Text>
+
+    <Boxed>Hello from this script</Boxed>
+    <Boxed title="I love Termlet" color="green">Wow this includes a color and a title</Boxed>
+
+    <ColoredText color="yellowBright" warning="false">This is colored!</ColoredText>
+
+    <Input type="text" title_alignment="center" id="message">Write a message here</Input>
+
+    <Script type="typescript" path="example/example.ts" />
+
+    <Require path="example/base.tml" />
+
+    <Text>Calling AnotherComponentFromAnotherFile</Text>
+
+    <AnotherComponentFromAnotherFile />
+
+  </Content>
+
+</TermletProject>
