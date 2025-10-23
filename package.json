@@ -1,6 +1,6 @@
 {
   "name": "termlet.js",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Lightweight markup language designed for building terminal-based projects",
   "main": "build/index.js",
   "typings": "typings/index.d.ts",
@@ -14,7 +14,14 @@
     "build": "bunx tsc",
     "push": "bun run build && bunx npm version patch && bun publish"
   },
-  "keywords": ["html", "ml", "markup", "language", "terminal", "cli"],
+  "keywords": [
+    "html",
+    "ml",
+    "markup",
+    "language",
+    "terminal",
+    "cli"
+  ],
   "author": "",
   "license": "ISC",
   "dependencies": {
