@@ -1,6 +1,6 @@
 import { writeFileSync } from "fs";
 import path from "path";
-import { getTermletDirectory } from "../../../utils";
+import { getTermletDirectory, logger } from "../../../utils";
 
 const pluginText = `import { TermletPlugin, TermletPluginData } from "termlet.js";
 
@@ -32,4 +32,6 @@ export function createPluginCMD(...args: any[]) {
     path.join(getTermletDirectory(), "plugins", `${name}.ts`),
     pluginText.replaceAll(`$name`, name)
   );
+
+  logger.info("Successfully created a new plugin for your project!");
 }
