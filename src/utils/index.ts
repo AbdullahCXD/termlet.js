@@ -1,6 +1,8 @@
-export type Defaultable<T> = { default: T }
-export type Class<T> = new (...args: any[]) => T
-export type Require<T> = Defaultable<T> | T
+import { execSync } from "child_process";
+
+export type Defaultable<T> = { default: T };
+export type Class<T> = new (...args: any[]) => T;
+export type Require<T> = Defaultable<T> | T;
 
 export function indent(length: number): string {
   return ` `.repeat(length);
@@ -16,6 +18,15 @@ export function parseBoolean(text: string) {
   if (text === "true") return true;
   else if (text === "false") return false;
   else return text;
+}
+
+export function executeCommand(cmd: string) {
+  execSync(cmd, {
+    cwd: process.cwd(),
+    encoding: "utf-8",
+    env: process.env,
+    stdio: "ignore",
+  });
 }
 
 export * from "./logger";

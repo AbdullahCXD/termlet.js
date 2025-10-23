@@ -1,13 +1,13 @@
 import { execSync } from "child_process";
 import { TermletConfiguration } from "../../config";
-import { logger } from "../../utils";
+import { executeCommand, logger } from "../../utils";
 import chalk from "chalk";
 import { writeFileSync } from "fs";
 import path from "path";
 
 const baseFile = `<?xml version="1.1" encoding="UTF-8"?>
 
-<TermletProject renderer="termlet-base" version="1.0.0">
+<TermletProject renderer="termlet-base" version="2.0.0">
 
   <Header>
     <Meta key="terminal.title" value="Attracted to this" />
@@ -42,14 +42,13 @@ export function createCMD(name: string) {
 
   writeFileSync(path.join(process.cwd(), 'main.tml'), baseFile);
 
-  logger.point(`npm install termlet.js@latest`)
+  logger.point(`npm init -y`);
 
-  execSync("npm install -D termlet.js@latest", {
-    cwd: process.cwd(),
-    encoding: "utf-8",
-    env: process.env,
-    stdio: "ignore"
-  });
+  executeCommand("npm init -y");
+
+  logger.point(`npm install termlet.js@latest`);
+
+  executeCommand("npm install -D termlet.js@latest");
 
   logger.info(`Created Termlet project successfully at ${process.cwd()}`);
 
