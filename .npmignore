@@ -6,3 +6,6 @@ docs
 TODO.md
 .editorconfig
 .prettierrc
+scripts
+termlet
+termlet.bat

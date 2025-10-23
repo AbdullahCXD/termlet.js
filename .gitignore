@@ -3,3 +3,6 @@ bun.lock
 
 build
 typings
+termlet
+termlet.yml
+termlet.bat
