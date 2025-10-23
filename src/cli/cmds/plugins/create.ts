@@ -29,7 +29,7 @@ export function createPluginCMD(...args: any[]) {
   const [name] = args;
 
   writeFileSync(
-    path.join(getTermletDirectory(), "plugins"),
+    path.join(getTermletDirectory(), "plugins", `${name}.ts`),
     pluginText.replaceAll(`$name`, name)
   );
 }
