@@ -1,0 +1,17 @@
+<?xml version="1.1" encoding="UTF-8"?>
+<TermletProject renderer="termlet-base" version="2.0.0">
+   <Header>
+      <Meta key="terminal.title" value="Invalid Base Test"/>
+      <Meta key="language.warnings" value="ignore"/>
+   </Header>
+   <Content>
+      <Text>
+         This shouldn't render since the base is incorrect.
+      </Text>
+
+
+      <Component name="ComponentisValid"></Component>
+
+      <ComponentisValid />
+   </Content>
+</TermletProject>

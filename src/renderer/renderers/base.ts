@@ -26,6 +26,10 @@ export class TermletBase implements IRenderer {
       {
         value: "2.0.0",
         deprecated: false
+      },
+      {
+        value: "2.0.1",
+        deprecated: false
       }
     ];
   }
@@ -39,7 +43,15 @@ export class TermletBase implements IRenderer {
   }
 
   async validate(node: TermletNode): Promise<ValidationResult> {
-    /*
+    if (node.name === "Component") {
+      await ComponentRegistry.render(this, node);
+      return {
+        type: ValidationResultEnum.Success,
+        message: "Valid Component",
+        node,
+      };
+    }
+
     if (["Header", "Content", "TermletProject"].includes(node.name))
       return {
         type: ValidationResultEnum.Success,
@@ -54,7 +66,6 @@ export class TermletBase implements IRenderer {
         node,
       };
     }
-    */
 
     return {
       type: ValidationResultEnum.Success,
