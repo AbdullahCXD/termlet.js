@@ -10,7 +10,7 @@ import {
 
 export class TermletBase implements IRenderer {
   name(): string {
-    return "termlet-base";
+    return "termlet.base";
   }
 
   version(): Version[] {
@@ -43,7 +43,7 @@ export class TermletBase implements IRenderer {
   }
 
   async validate(node: TermletNode): Promise<ValidationResult> {
-    if (node.name === "Component") {
+    if (["Component", "Require"].includes(node.name)) {
       await ComponentRegistry.render(this, node);
       return {
         type: ValidationResultEnum.Success,
@@ -99,7 +99,7 @@ export class TermletBase implements IRenderer {
   async renderComponents(node: TermletNode) {
     await ComponentRegistry.render(this, node);
 
-    if (node.hasChildren()) {
+    if (node.name !== "Component" && node.hasChildren()) {
       for (const child of node.children) {
         await this.renderComponents(child);
       }

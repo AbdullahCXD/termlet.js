@@ -1,6 +1,6 @@
 <?xml version="1.1" encoding="UTF-8"?>
 
-<TermletProject renderer="termlet-base" version="1.0.0">
+<TermletProject renderer="termlet.base" version="2.0.1">
 
   <Header>
     <Meta key="terminal.title" value="Attracted to this" />

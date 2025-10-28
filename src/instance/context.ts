@@ -1,22 +1,25 @@
 import * as vm from "vm";
 import { captureInputAnswer } from "./context/captures";
 import { getNodeById } from "./context/nodes";
+import { createFunctionMethod, getFunctionMethod } from "./context/functions";
 
 export function TermletContext(): vm.Context {
 
   const context: vm.Context = {};
-
-  // add Context methods here
 
   context.print = (message: string, ...other: string[]) => {
     console.log(message, ...other);
   }
 
   context.Termlet = {};
-  context.Termlet.Nodes = {
+  context.Termlet.Terminal = {
     captureInputAnswer,
-    getNodeById
+    getNodeById,
+    createFunction: createFunctionMethod,
+    getFunction: getFunctionMethod
   }
+
+  context.Terminal = context.Termlet.Terminal;
 
   return context;
 }

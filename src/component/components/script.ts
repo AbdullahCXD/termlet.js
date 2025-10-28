@@ -1,4 +1,4 @@
-import { TermletInstance } from "../../config/instance";
+import { TermletInstance } from "../../instance";
 import { NodeName, TermletNode } from "../../renderer";
 import { BaseComponent } from "../base";
 

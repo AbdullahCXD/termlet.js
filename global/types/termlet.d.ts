@@ -3,7 +3,7 @@ import { TermletNode } from "../../src/renderer";
 /**
  * Manages Termlet node operations.
  */
-export interface TermletNodesManager {
+export interface TermletTerminalManager {
   /**
    * Captures the input answer associated with a specific node ID.
    * @param id - The unique identifier of the node.
@@ -15,7 +15,12 @@ export interface TermletNodesManager {
    * @param id The unique identifier of the node
    * @returns The node found
    */
-  getNodeByID(id: string): TermletNode | undefined
+  getNodeByID(id: string): TermletNode | undefined;
+  
+  
+  createFunctionMethod(name: string, func: CFMethodCallback): void;
+  
+  getFunctionMethod(name: string): CFMethodCallback | undefined;
 }
 
 /**
@@ -25,14 +30,26 @@ export interface TermletInterface {
   /**
    * Provides access to node management utilities.
    */
-  Nodes: TermletNodesManager;
+  Nodes: TermletTerminalManager;
 }
 
 declare global {
+
+  export type CFMethodContext = {
+    node: TermletNode;
+  }
+  
+  export type CFMethodCallback = (context: CFMethodContext) => void;
+
   /**
    * Global Termlet object providing access to core Termlet functionality.
    */
   const Termlet: TermletInterface;
+
+  /**
+   * Easier access to the terminal object from Termlet#Terminal
+   */
+  const Terminal: TermletTerminalManager;
 
   /**
    * Prints a message to the output stream.
